@@ -27,8 +27,8 @@ public class CarRentalList extends HttpServlet {
     String user = req.getParameter("userid");
 	String pass = req.getParameter("password");
 	
-	//if (user != "user" || pass != "pass") out.println("<html>Incorrecte. Vuelva a intentarlo.</html>");
-    //else {
+	if (!user.equals("user") || !pass.equals("pass")) out.println("<html>Incorrecte. Vuelva a intentarlo.</html>");
+    else {
     	try (Reader reader = new FileReader("/home/alumne/apache-tomcat-9.0.5/webapps/my_webapp/WEB-INF/classes/mypackage/rentals.json")) {
 
 	        JSONObject jsonObject = (JSONObject) parser.parse(reader);
@@ -54,7 +54,7 @@ public class CarRentalList extends HttpServlet {
 	    } catch (ParseException e) {
 	            e.printStackTrace();
 	    }
-    //}
+    }
     
   }
 

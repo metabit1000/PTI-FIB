@@ -29,9 +29,15 @@ public class CarRentalNew extends HttpServlet {
     String dies_lloguer = req.getParameter("dies_lloguer");
     String num_vehicles = req.getParameter("num_vehicles");
     String descompte = req.getParameter("descompte");
+
+    String model_real = null;
+    if (model_vehicle.equals("54")) model_real = "Economic";
+    else if (model_vehicle.equals("71")) model_real = "Semi-luxe";
+    else if (model_vehicle.equals("82")) model_real = "Luxe";
+    else if (model_vehicle.equals("139")) model_real = "Limusina";
     
     /* Mostramos los valores */
-	out.println("<html> model_vehicle:"+ model_vehicle + "<br> sub_model_vehicle:"+
+	out.println("<html> model_vehicle:"+ model_real + "<br> sub_model_vehicle:"+
                 sub_model_vehicle + "<br> dies_lloguer:"+ dies_lloguer+ "<br> num_vehicles :"+ num_vehicles + "<br> descompte:" + descompte + "</html>");
                 
 	
@@ -60,7 +66,7 @@ public class CarRentalNew extends HttpServlet {
     JSONObject objfinal = new JSONObject(); //necesario para escribir
 
     /* Ponemos el nuevo rental en la list */
-    obj.put("model_vehicle", model_vehicle);
+    obj.put("model_vehicle", model_real);
     obj.put("sub_model_vehicle", sub_model_vehicle);
     obj.put("dies_lloguer", dies_lloguer);
     obj.put("num_vehicles", num_vehicles);
